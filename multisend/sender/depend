@@ -1,0 +1,18 @@
+send1way.o: send1way.cc socket.hh
+socket.o: socket.cc socket.hh
+buffer-setpoint.o: buffer-setpoint.cc socket.hh hist.hh
+hist.o: hist.cc hist.hh
+controlled-delay.o: controlled-delay.cc delay-servo.hh socket.hh \
+ rate-estimate.hh payload.hh history.hh
+rate-estimate.o: rate-estimate.cc rate-estimate.hh socket.hh payload.hh
+payload.o: payload.cc payload.hh
+history.o: history.cc history.hh payload.hh
+delay-servo.o: delay-servo.cc delay-servo.hh socket.hh rate-estimate.hh \
+ payload.hh history.hh
+saturatr.o: saturatr.cc acker.hh socket.hh saturateservo.hh
+acker.o: acker.cc acker.hh socket.hh payload.hh saturateservo.hh
+saturateservo.o: saturateservo.cc saturateservo.hh socket.hh payload.hh \
+ acker.hh
+cellsim.o: cellsim.cc select.h fatal_assert.h timestamp.h packetsocket.hh
+select.o: select.cc select.h fatal_assert.h
+packetsocket.o: packetsocket.cc packetsocket.hh
