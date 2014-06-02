@@ -8,9 +8,9 @@ import sys
 
 NUM_ITERATIONS = 5
 
-TRACES_PATH = '/home/cs244-sprout/experiment/cleaned_traces'
-PLOTS_PATH = '/home/cs244-sprout/experiment/plots'
-RESULTS_PATH = '/home/cs244-sprout/experiment/results'
+TRACES_PATH = 'cleaned_traces'
+PLOTS_PATH = 'plots'
+RESULTS_PATH = 'results'
 
 NETWORK_NAME = {
     'att': 'AT&T LTE',

@@ -5,12 +5,12 @@ import re
 import subprocess
 import sys
 
-RESULTS_PATH = '/home/cs244-sprout/experiment/results'
-TRACES_PATH = '/home/cs244-sprout/experiment/cleaned_traces'
-ORACULAR_TRACES_PATH = '/home/cs244-sprout/experiment/oracular_traces'
+RESULTS_PATH = 'results'
+TRACES_PATH = 'cleaned_traces'
+ORACULAR_TRACES_PATH = 'oracular_traces'
 
-SCORER_PATH = '/home/cs244-sprout/experiment/alfalfa/src/examples/scorer'
-QUANTILES_PATH = '/home/cs244-sprout/experiment/alfalfa/src/examples/quantiles'
+SCORER_PATH = 'alfalfa/src/examples/scorer'
+QUANTILES_PATH = 'alfalfa/src/examples/quantiles'
 
 def extract_metrics(trace_file, mode):
     subprocess.call('cat %s | %s %s > temp1 2> temp2' % (trace_file, SCORER_PATH, mode), shell = True)
