@@ -8,9 +8,9 @@ import sys
 
 NUM_ITERATIONS = 5
 
-TRACES_PATH = '/home/cs244-sprout/experiment/cleaned_traces'
-PLOTS_PATH = '/home/cs244-sprout/experiment/plots'
-RESULTS_PATH = '/home/cs244-sprout/experiment/results'
+TRACES_PATH = 'cleaned_traces'
+PLOTS_PATH = 'plots'
+RESULTS_PATH = 'results'
 
 NETWORK_NAME = {
     'att': 'AT&T LTE',
@@ -40,7 +40,7 @@ def create_histogram(network):
     _histogram(network, 'downlink')
 
 def create_error_plot(network):
-    apps = os.listdir('%s/%s' % (RESULTS_PATH, network))
+    apps = os.listdir('%s/%s-error' % (RESULTS_PATH, network))
     
     data = {}
     
@@ -179,10 +179,9 @@ if __name__ == '__main__':
 
     if not os.path.exists(PLOTS_PATH):
         os.makedirs(PLOTS_PATH)
-        
-    for network in networks:
-        create_plot(network)
-        create_histogram(network)
-
     if len(sys.argv) == 2:
-        create_error_plot(sys.argv[1])
+        create_error_plot(sys.argv[1])    
+    else:
+    	for network in networks:
+            create_plot(network)
+            create_histogram(network)    
