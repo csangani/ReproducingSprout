@@ -54,7 +54,7 @@ def create_histogram(network):
     _histogram(network, 'downlink')
 
 def create_error_plot(network):
-    apps = os.listdir('%s/%s-error' % (RESULTS_PATH, network))
+    apps = os.listdir('%s/%s' % (RESULTS_PATH, network))
     
     data = {}
     
@@ -90,7 +90,6 @@ def create_error_plot(network):
         
         data[app]['dd-mean'] = numpy.mean([data[app]['dd-%s' % i] for i in range(1,NUM_ITERATIONS+1)])
         data[app]['dd-std'] = numpy.std([data[app]['dd-%s' % i] for i in range(1,NUM_ITERATIONS+1)])
-        
     
     _plot(network, data, 'uplink', error = True)
     _plot(network, data, 'downlink', error = True)
@@ -193,9 +192,12 @@ def _plot(network, data, mode, error = False):
                     data[app]['ut-mean' if mode == 'uplink' else 'dt-mean']),
                 xytext=(10, 5), textcoords='offset points',)
                 
-    plt.legend(scatterpoints = 1)
+    #plt.legend(scatterpoints = 1)
 
-    fig.savefig('%s/%s-%s.png' % (PLOTS_PATH, network, mode))
+    if not error:
+        fig.savefig('%s/%s-%s.png' % (PLOTS_PATH, network, mode))
+    else:
+        fig.savefig('%s/error-%s-%s.png' % (PLOTS_PATH, network, mode))
     
     plt.close()
     
