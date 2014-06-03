@@ -31,6 +31,20 @@ APPLICATION_NAME = {
     'tcp_vegas': 'TCP Vegas'
 }
 
+MARKER_STYLE = {
+    'sprout': '*',
+    'tcp_cubic': '+',
+    'tcp_vegas': 'x',
+    'tcp_reno': 'o'
+}
+
+COLOR = {
+    'sprout': 'b',
+    'tcp_cubic': 'r',
+    'tcp_vegas': 'g',
+    'tcp_reno': '#FFA500'
+}
+
 def read_data(path):
     with open(path) as f:
         return int(f.read())
@@ -139,24 +153,34 @@ def _plot(network, data, mode, error = False):
     plt.title('%s %s' % (NETWORK_NAME[network], mode.title()))
 
     if not error:
-        plt.scatter(
-            [data[app]['ud' if mode == 'uplink' else 'dd'] for app in data],
-            [data[app]['ut' if mode == 'uplink' else 'dt'] for app in data]
-        )
+        for app in data:
+            plt.scatter(
+                data[app]['ud' if mode == 'uplink' else 'dd'],
+                data[app]['ut' if mode == 'uplink' else 'dt'],
+                marker = MARKER_STYLE[app],
+                color = COLOR[app],
+                label = APPLICATION_NAME[app],
+                s = 60
+            )
     
     else:
-        plt.scatter(
-            [data[app]['ud-mean' if mode == 'uplink' else 'dd-mean'] for app in data],
-            [data[app]['ut-mean' if mode == 'uplink' else 'dt-mean'] for app in data]
-        )
-        plt.errorbar(
-            [data[app]['ud-mean' if mode == 'uplink' else 'dd-mean'] for app in data],
-            [data[app]['ut-mean' if mode == 'uplink' else 'dt-mean'] for app in data],
-            [data[app]['ud-std' if mode == 'uplink' else 'dd-std'] for app in data],
-            [data[app]['ut-std' if mode == 'uplink' else 'dt-std'] for app in data],
-            fmt = None
-        )
-    
+        for app in data:
+            plt.scatter(
+                data[app]['ud-mean' if mode == 'uplink' else 'dd-mean'],
+                data[app]['ut-mean' if mode == 'uplink' else 'dt-mean'],
+                marker = MARKER_STYLE[app],
+                color = COLOR[app],
+                label = APPLICATION_NAME[app],
+                s = 60
+            )
+            plt.errorbar(
+                data[app]['ud-mean' if mode == 'uplink' else 'dd-mean'],
+                data[app]['ut-mean' if mode == 'uplink' else 'dt-mean'],
+                data[app]['ud-std' if mode == 'uplink' else 'dd-std'],
+                data[app]['ut-std' if mode == 'uplink' else 'dt-std'],
+                fmt = None,
+                color = COLOR[app]
+            )
     for app in data:
         if not error:
             plt.annotate(APPLICATION_NAME[app],
@@ -168,6 +192,8 @@ def _plot(network, data, mode, error = False):
                 (data[app]['ud-mean' if mode == 'uplink' else 'dd-mean'],
                     data[app]['ut-mean' if mode == 'uplink' else 'dt-mean']),
                 xytext=(10, 5), textcoords='offset points',)
+                
+    plt.legend(scatterpoints = 1)
 
     fig.savefig('%s/%s-%s.png' % (PLOTS_PATH, network, mode))
     

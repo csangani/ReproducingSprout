@@ -1,6 +1,5 @@
 ## Create a network trace using specified distribution for packet intervals
 
-import math
 import numpy
 import os
 import random
