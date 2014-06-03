@@ -4,6 +4,7 @@ from mininet.topo import Topo
 from mininet.net import Mininet
 from mininet.link import TCLink
 from mininet.node import CPULimitedHost
+from mininet.node import OVSController
 
 import os
 import subprocess
@@ -75,7 +76,7 @@ def run_experiment(network, application):
         os.makedirs(destination)
     
     topo = CellsimTopo()
-    testbed = Mininet(topo = topo, host = CPULimitedHost, link = TCLink)
+    testbed = Mininet(topo = topo, host = CPULimitedHost, link = TCLink, controller = OVSController)
     testbed.start()
     
     try:
