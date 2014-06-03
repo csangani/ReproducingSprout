@@ -1,6 +1,5 @@
 ## Create a network trace using specified distribution for packet intervals
 
-import math
 import numpy
 import os
 import random
@@ -9,7 +8,7 @@ import sys
 UPLINK_TRACE_SIZE = 30000
 DOWNLINK_TRACE_SIZE = 350000
 
-TRACES_PATH = '/home/cs244-sprout/experiment/cleaned_traces'
+TRACES_PATH = 'cleaned_traces'
 
 def create_trace(d_name, d_function, mode):
     intervals = [int(round(abs(d_function()))) for _ in range(UPLINK_TRACE_SIZE if mode == 'uplink' else DOWNLINK_TRACE_SIZE)]

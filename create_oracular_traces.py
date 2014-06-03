@@ -5,8 +5,8 @@ import os
 import re
 import sys
 
-INPUT_PATH = '/home/cs244-sprout/experiment/cleaned_traces'
-OUTPUT_PATH = '/home/cs244-sprout/experiment/oracular_traces'
+INPUT_PATH = 'cleaned_traces'
+OUTPUT_PATH = 'oracular_traces'
 
 def create_oracular_trace(filePath, targetFilePath, mode):
     with open(filePath) as f:

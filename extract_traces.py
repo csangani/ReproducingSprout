@@ -4,8 +4,8 @@ import glob
 import os
 import sys
 
-INPUT_PATH = '/home/cs244-sprout/experiment/raw_traces'
-OUTPUT_PATH = '/home/cs244-sprout/experiment/cleaned_traces'
+INPUT_PATH = 'raw_traces'
+OUTPUT_PATH = 'cleaned_traces'
 
 def extract_trace(filePath, targetFilePath):
     with open(filePath) as f:

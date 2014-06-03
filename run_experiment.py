@@ -11,14 +11,14 @@ import sys
 import time
 
 ## Output directories
-OUTPUT_PATH = '/home/cs244-sprout/experiment/results'
+OUTPUT_PATH = 'results'
 
 ## Testbed directories
-CELLSIM_PATH = '/home/cs244-sprout/experiment/multisend/sender/cellsim'
-TRACES_PATH = '/home/cs244-sprout/experiment/cleaned_traces'
+CELLSIM_PATH = 'multisend/sender/cellsim'
+TRACES_PATH = 'cleaned_traces'
 
 ## Application directories
-SPROUT_PATH = '/home/cs244-sprout/experiment/alfalfa/src/examples/sproutbt2'
+SPROUT_PATH = 'alfalfa/src/examples/sproutbt2'
 
 class CellsimTopo(Topo):
     def __init__(self, **opts):
