@@ -5,8 +5,8 @@ for network in "tmobile"; do
   for application in "sprout" "tcp_vegas" "tcp_cubic" "tcp_reno"; do 
     for i in $(seq 1 $num_runs); do 
       echo "$network $application run: $i"
-      python run_experiment.py $network $application
-      python extract_metrics.py $network $application
+      sudo python run_experiment.py $network $application
+      sudo python extract_metrics.py $network $application
     done
   done
 done
