@@ -1,8 +1,0 @@
-\.swp$
-\.o$
-\.so$
-\.bak$
-src/build/
-\.sconsign.dblite
-\.os$
-\.dylib$

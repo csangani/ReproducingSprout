@@ -1,8 +1,0 @@
-data/src/openflow.h.i
-data/src/packet-openflow.c.i
-data/src/Sconstruct.i
-data/.hgtags.i
-data/README.i
-data/.hgignore.i
-data/src/plugin.c.i
-data/src/moduleinfo.h.i

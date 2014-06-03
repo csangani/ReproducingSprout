@@ -1,0 +1,6 @@
+[submodule "alfalfa"]
+	path = alfalfa
+	url = git://github.com/keithw/alfalfa
+[submodule "multisend"]
+	path = multisend
+	url = git://github.com/keithw/multisend
