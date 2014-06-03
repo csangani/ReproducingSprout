@@ -2,7 +2,7 @@
 
 TRACES_PATH=cleaned_traces
 RESULTS_PATH=results
-ERRORS_NETWORKS= (att verizon4g)
+ERRORS_NETWORKS=( att verizon4g )
 
 networks=$(ls $TRACES_PATH)
 apps=( sprout tcp_cubic tcp_vegas tcp_reno )
@@ -23,11 +23,9 @@ do
     mv $RESULTS_PATH/$network/$app/downlink-delay $RESULTS_PATH/$network/$app/downlink-delay-reproduce
 done
 
-echo "**** Done reproducing plots. Now running each\n 
-      **** application 5 times for 17 minutes over AT&T\n
-      **** and Verizon 4G traces to produe error plots"
+echo -e "**** Done reproducing plots. Now running each\n**** application 5 times for 17 minutes over AT&T\n**** and Verizon 4G traces to produe error plots"
 
-for net in "att" "verizon4g"
+for net in ${ERRORS_NETWORKS[@]}
 do  
     for i in 1 2 3 4 5
     do
