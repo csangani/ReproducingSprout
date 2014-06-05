@@ -104,7 +104,7 @@ def run_experiment(network, application):
             type = application.split('_')[1]
             
             # Install TCP module
-            subprocess.Popen('modprobe tcp_%s' % type, shell = True)
+            subprocess.Popen('modprobe -q tcp_%s' % type, shell = True)
             
             # Set TCP congestion control
             subprocess.Popen('echo "%s" > /proc/sys/net/ipv4/tcp_congestion_control' % type, shell = True)
