@@ -16,12 +16,14 @@ do
         echo "**** Extracting performance metrics"
         python extract_metrics.py $network $app
     done
-    python create_plots.py
     mv $RESULTS_PATH/$network/$app/uplink-throughput $RESULTS_PATH/$network/$app/uplink-throughput-reproduce
     mv $RESULTS_PATH/$network/$app/uplink-delay $RESULTS_PATH/$network/$app/uplink-delay-reproduce
     mv $RESULTS_PATH/$network/$app/downlink-throughput $RESULTS_PATH/$network/$app/downlink-throughput-reproduce
     mv $RESULTS_PATH/$network/$app/downlink-delay $RESULTS_PATH/$network/$app/downlink-delay-reproduce
 done
+
+echo "**** Creating plots"
+python create_plots.py
 
 echo -e "**** Done reproducing plots. Now running each\n**** application 5 times for 17 minutes over AT&T\n**** and Verizon 4G traces to produe error plots"
 
