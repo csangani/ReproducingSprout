@@ -101,10 +101,10 @@ def create_plot(network):
     
     for app in apps:
         try:
-            uplink_throughput = read_data('%s/%s/%s/uplink-throughput' % (RESULTS_PATH, network, app))
-            uplink_delay = read_data('%s/%s/%s/uplink-delay' % (RESULTS_PATH, network, app))
-            downlink_throughput = read_data('%s/%s/%s/downlink-throughput' % (RESULTS_PATH, network, app))
-            downlink_delay = read_data('%s/%s/%s/downlink-delay' % (RESULTS_PATH, network, app))
+            uplink_throughput = read_data('%s/%s/%s/uplink-throughput-reproduce' % (RESULTS_PATH, network, app))
+            uplink_delay = read_data('%s/%s/%s/uplink-delay-reproduce' % (RESULTS_PATH, network, app))
+            downlink_throughput = read_data('%s/%s/%s/downlink-throughput-reproduce' % (RESULTS_PATH, network, app))
+            downlink_delay = read_data('%s/%s/%s/downlink-delay-reproduce' % (RESULTS_PATH, network, app))
 
             data[app] = {
                 'ut': uplink_throughput,
