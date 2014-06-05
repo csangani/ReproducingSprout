@@ -15,11 +15,11 @@ do
         python run_experiment.py $network $app
         echo "**** Extracting performance metrics"
         python extract_metrics.py $network $app
+        mv $RESULTS_PATH/$network/$app/uplink-throughput $RESULTS_PATH/$network/$app/uplink-throughput-reproduce
+        mv $RESULTS_PATH/$network/$app/uplink-delay $RESULTS_PATH/$network/$app/uplink-delay-reproduce
+        mv $RESULTS_PATH/$network/$app/downlink-throughput $RESULTS_PATH/$network/$app/downlink-throughput-reproduce
+        mv $RESULTS_PATH/$network/$app/downlink-delay $RESULTS_PATH/$network/$app/downlink-delay-reproduce
     done
-    mv $RESULTS_PATH/$network/$app/uplink-throughput $RESULTS_PATH/$network/$app/uplink-throughput-reproduce
-    mv $RESULTS_PATH/$network/$app/uplink-delay $RESULTS_PATH/$network/$app/uplink-delay-reproduce
-    mv $RESULTS_PATH/$network/$app/downlink-throughput $RESULTS_PATH/$network/$app/downlink-throughput-reproduce
-    mv $RESULTS_PATH/$network/$app/downlink-delay $RESULTS_PATH/$network/$app/downlink-delay-reproduce
 done
 
 echo "**** Creating plots"
