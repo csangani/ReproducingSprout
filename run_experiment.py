@@ -120,9 +120,7 @@ def run_experiment(network, application):
             wait(1020, 'Running experiment')
             
     finally:
-        subprocess.call('killall cellsim', shell = True)
-        subprocess.call('killall sproutbt2', shell = True)
-        subprocess.call('killall iperf', shell = True)
+        subprocess.call('killall -q cellsim sproutbt2 iperf', shell = True)
         testbed.stop()
 
 if __name__ == '__main__':
