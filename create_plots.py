@@ -142,9 +142,9 @@ def _histogram(network, mode):
     plt.close()
         
 def _plot(network, data, mode, error = False):
-    fig = plt.figure(figsize = (6,4))
+    fig = plt.figure(figsize = (7,4))
 
-    ax = fig.add_axes([0.19,0.17,0.7,0.7])
+    ax = fig.add_axes([0.15,0.17,0.5,0.7])
     ax.set_xscale('log')
     ax.invert_xaxis()
 
@@ -182,19 +182,19 @@ def _plot(network, data, mode, error = False):
                 fmt = None,
                 color = COLOR[app]
             )
-    for app in data:
-        if not error:
-            plt.annotate(APPLICATION_NAME[app],
-                (data[app]['ud' if mode == 'uplink' else 'dd'],
-                    data[app]['ut' if mode == 'uplink' else 'dt']),
-                xytext=(10, -5), textcoords='offset points',)
-        else:
-            plt.annotate(APPLICATION_NAME[app],
-                (data[app]['ud-mean' if mode == 'uplink' else 'dd-mean'],
-                    data[app]['ut-mean' if mode == 'uplink' else 'dt-mean']),
-                xytext=(10, 5), textcoords='offset points',)
+    #for app in data:
+    #    if not error:
+    #        plt.annotate(APPLICATION_NAME[app],
+    #            (data[app]['ud' if mode == 'uplink' else 'dd'],
+    #                data[app]['ut' if mode == 'uplink' else 'dt']),
+    #            xytext=(10, -5), textcoords='offset points',)
+    #    else:
+    #        plt.annotate(APPLICATION_NAME[app],
+    #            (data[app]['ud-mean' if mode == 'uplink' else 'dd-mean'],
+    #               data[app]['ut-mean' if mode == 'uplink' else 'dt-mean']),
+    #            xytext=(10, 5), textcoords='offset points',)
                 
-    #plt.legend(scatterpoints = 1)
+    plt.legend(scatterpoints = 1, bbox_to_anchor = (1.05, 1), loc = 2)
 
     if not error:
         fig.savefig('%s/%s-%s.png' % (PLOTS_PATH, network, mode))
