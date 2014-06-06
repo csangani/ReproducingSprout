@@ -1,5 +1,6 @@
 ## Create plots (d'oh)
 
+import matplotlib
 import matplotlib.pyplot as plt
 import numpy
 
@@ -126,7 +127,8 @@ def _histogram(network, mode):
     for i in range(1, len(data)):
         intervals += [data[i] - data[i-1]]
         
-    fig = plt.figure()
+    fig = plt.figure(figsize = (6,4))
+    fig.add_axes([0.2,0.17,0.7,0.7])
     
     plt.hist(intervals, range = (0,100), bins = 40)
     
@@ -140,9 +142,9 @@ def _histogram(network, mode):
     plt.close()
         
 def _plot(network, data, mode, error = False):
-    fig = plt.figure()
+    fig = plt.figure(figsize = (6,4))
 
-    ax = plt.subplot(111)
+    ax = fig.add_axes([0.19,0.17,0.7,0.7])
     ax.set_xscale('log')
     ax.invert_xaxis()
 
@@ -202,7 +204,7 @@ def _plot(network, data, mode, error = False):
     plt.close()
     
 if __name__ == '__main__':
-    
+
     networks = os.listdir(RESULTS_PATH)
 
     if not os.path.exists(PLOTS_PATH):
